@@ -104,6 +104,7 @@ class block_panopto extends block_base {
         // Construct the Panopto data proxy object
         $panopto_data = new panopto_data($COURSE->id);
 
+        $this->content->text ='';
         if(empty($panopto_data->servername) || empty($panopto_data->instancename) || empty($panopto_data->applicationkey)) {
             $this->content->text = get_string('unconfigured', 'block_panopto');
             $this->content->footer = "";
