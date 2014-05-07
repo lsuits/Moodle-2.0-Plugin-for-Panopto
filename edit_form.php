@@ -37,7 +37,7 @@ class block_panopto_edit_form extends block_edit_form {
 
             $add_to_panopto = get_string('add_to_panopto', 'block_panopto');
             $or = get_string('or', 'block_panopto');
-            $mform->addElement('html', "<a href='$provision_url'>$add_to_panopto</a><br><br>-- $or --<br><br>");
+            $mform->addElement('html', "<a class='panopto_link' href='$provision_url'>$add_to_panopto</a><br><br>-- $or --<br><br>");
 
             $course_list = $panopto_data->get_course_options();
             $mform->addElement('selectgroups', 'config_course', get_string('existing_course', 'block_panopto'), $course_list['courses']);
