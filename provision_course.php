@@ -74,7 +74,6 @@ if ($mform->is_cancelled()) {
     $PAGE->set_pagelayout('base');
     $PAGE->set_title($provision_title);
     $PAGE->set_heading($provision_title);
-
     if ($course_id_param != 0) {
         // Course context
         require_capability('block/panopto:provision_course', $context);
@@ -99,7 +98,7 @@ if ($mform->is_cancelled()) {
     $PAGE->navbar->add($provision_title, new moodle_url($PAGE->url));
     echo $OUTPUT->header();
 
-    if ($courses) {
+    if (isset($courses)) {
         $provisioned = array();
         $panopto_data = new panopto_data(null);
         foreach ($courses as $course_id) {
