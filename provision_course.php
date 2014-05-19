@@ -111,7 +111,7 @@ if ($mform->is_cancelled()) {
             $provisioned_data  = $panopto_data->provision_course($provisioning_data);
             include 'views/provisioned_course.html.php';
         }
-        echo "<a href='$return_url'>Back to config</a>";
+        echo "<a class='panopto_center' href='$return_url'>" . get_string('backto', 'block_panopto') . "</a>";
     } else {
         $mform->display();
     }

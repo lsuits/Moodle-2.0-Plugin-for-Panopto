@@ -107,3 +107,13 @@
     padding: 10px;
     margin-left: 20px;
 }
+
+.block_panopto .courseProvisionResult, .panopto_center {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.panopto_center {
+   display: block;
+   margin: 10px auto 20px auto;
+}

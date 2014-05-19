@@ -265,6 +265,12 @@ class block_panopto extends block_base {
         }
         catch(Exception $e) {
             $this->content->text .= "<br><br><span class='error'>" . get_string('error_retrieving', 'block_panopto') . "</span>";
+
+        }
+
+        if(has_capability('moodle/course:update', $context)) {
+            $backtocourse = urlencode($CFG->wwwroot . '/course/view.php?id=' . $COURSE->id);
+            $this->content->text .= '<br /><a href="' . $CFG->wwwroot . '/blocks/panopto/provision_course.php?course_id=' . $COURSE->id . '&return_url=' . $backtocourse .'" >' . get_string('block_add_thiscourse', 'block_panopto') . '</a>';
         }
 
         $this->content->footer = '';

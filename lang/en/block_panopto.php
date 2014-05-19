@@ -54,4 +54,6 @@ $string['course_settings'] = 'Course Settings';
 $string['download_recorder'] = 'Download Recorder';
 $string['show_all'] = 'Show All';
 $string['show_less'] = 'Show Less';
+$string['block_add_thiscourse'] = 'Provision this course';
+$string['backto'] = 'Return to previous page';
 /* End of file block_panopto.php */
