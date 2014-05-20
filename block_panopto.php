@@ -215,6 +215,10 @@ class block_panopto extends block_base {
 				        							<a href='$course_info->CourseSettingsURL' onclick='return panopto_startSSO(this)'
 				        								>" . get_string('course_settings', 'block_panopto') . "</a>
 			        							 </div>\n";
+                        $this->content->text .=                                         "<div class='listItem'>
+                                                                                                <a href=https://" . $CFG->block_panopto_server_name . "/Panopto/Pages/Sessions/List.aspx onclick='return panopto_startSSO(this)'
+                                                                                                        >" . get_string('panoptorecordings', 'block_panopto') . "</a>
+                                                                                         </div>\n";
                         $system_info = $panopto_data->get_system_info();
                         $this->content->text .= "<div class='listItem'>
 				        							" . get_string('download_recorder', 'block_panopto') . "

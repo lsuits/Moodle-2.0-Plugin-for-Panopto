@@ -56,4 +56,5 @@ $string['show_all'] = 'Show All';
 $string['show_less'] = 'Show Less';
 $string['block_add_thiscourse'] = 'Provision this course';
 $string['backto'] = 'Return to previous page';
+$string['panoptorecordings'] = 'All My Panopto Recordings';
 /* End of file block_panopto.php */
