@@ -103,6 +103,7 @@ class block_panopto extends block_base {
 
         // Construct the Panopto data proxy object
         $panopto_data = new panopto_data($COURSE->id);
+        $context = context_course::instance($COURSE->id, MUST_EXIST);
 
         $this->content->text ='';
         if(empty($panopto_data->servername) || empty($panopto_data->instancename) || empty($panopto_data->applicationkey)) {
@@ -114,7 +115,7 @@ class block_panopto extends block_base {
 
         try {
             if(!$panopto_data->sessiongroup_id) {
-                $this->content->text .= get_string('no_course_selected', 'block_panopto');
+                $this->content->text .= "<span>" . get_string('no_course_selected', 'block_panopto') . "</span>";
             } else {
                 // Get course info from SOAP service.
                 $course_info = $panopto_data->get_course();
@@ -208,7 +209,6 @@ class block_panopto extends block_base {
 		                        				 </div>";
                         }
                     }
-                    $context = context_course::instance($COURSE->id, MUST_EXIST);
                     if(has_capability('moodle/course:update', $context)) {
                         $this->content->text .= "<div class='sectionHeader'><b>" . get_string('links', 'block_panopto') . "</b></div>
 				        						 <div class='listItem'>
@@ -227,7 +227,7 @@ class block_panopto extends block_base {
 								   							| <a href='$system_info->MacRecorderDownloadUrl'>Mac</a>)</span>
 			        							</div>";
                     }
-                     
+
                     $this->content->text .= '
 						<script type="text/javascript">
 			        // Function to pop up Panopto live note taker.
@@ -274,7 +274,8 @@ class block_panopto extends block_base {
 
         if(has_capability('moodle/course:update', $context)) {
             $backtocourse = urlencode($CFG->wwwroot . '/course/view.php?id=' . $COURSE->id);
-            $this->content->text .= '<br /><a href="' . $CFG->wwwroot . '/blocks/panopto/provision_course.php?course_id=' . $COURSE->id . '&return_url=' . $backtocourse .'" >' . get_string('block_add_thiscourse', 'block_panopto') . '</a>';
+            $this->content->text .= '<div class="provision"><span><a href="' . $CFG->wwwroot . '/blocks/panopto/provision_course.php?course_id=' . $COURSE->id . '&return_url=' . $backtocourse .'" >' . get_string('block_add_thiscourse', 'block_panopto') . '</
+a></span></div>';
         }
 
         $this->content->footer = '';
