@@ -21,6 +21,7 @@ $string['pluginname'] = 'Panopto Focus';
 $string['panopto:addinstance'] = 'Add a new Panopto block';
 $string['panopto:myaddinstance'] = 'Add a new Panopto block to my page';
 $string['panopto:provision_course'] = 'Provision a course';
+$string['panopto:provision_asteacher'] = 'Provision a course';
 $string['panopto:provision_multiple'] = 'Provision multiple courses at once';
 $string['provision_courses'] = 'Provision Courses';
 $string['provisioncourseselect'] = 'Select Courses to Provision.';
