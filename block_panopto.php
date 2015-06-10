@@ -169,10 +169,17 @@ class block_panopto extends block_base {
                     $this->content->text .= "<span class='error'>" . get_string('error_retrieving', 'block_panopto') . "</span>";
                 } else {
                     // SSO form passes instance name in POST to keep URLs portable.
-                    $this->content->text .= "
-                        <form name='SSO' method='post'>
-                            <input type='hidden' name='instance' value='$panoptodata->instancename' />
-                        </form>";
+                      if (!isset($this->content->text)) {
+                          $this->content->text = "
+                              <form name='SSO' method='post'>
+                                  <input type='hidden' name='instance' value='$panoptodata->instancename' />
+                              </form>";
+                      } else {
+                          $this->content->text .= "
+                              <form name='SSO' method='post'>
+                                  <input type='hidden' name='instance' value='$panoptodata->instancename' />
+                              </form>";
+                      }
 
                     $this->content->text .= '<div><b>' . get_string('live_sessions', 'block_panopto') . '</b></div>';
                     $livesessions = $panoptodata->get_live_sessions();
