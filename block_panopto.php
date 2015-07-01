@@ -166,7 +166,11 @@ class block_panopto extends block_base {
 
                 // Panopto course was deleted, or an exception was thrown while retrieving course data.
                 if ($courseinfo->Access == "Error") {
-                    $this->content->text .= "<span class='error'>" . get_string('error_retrieving', 'block_panopto') . "</span>";
+                    if (!isset($this->content->text)) {
+                      $this->content->text = "<span class='error'>" . get_string('error_retrieving', 'block_panopto') . "</span>";
+                    } else {
+                      $this->content->text .= "<span class='error'>" . get_string('error_retrieving', 'block_panopto') . "</span>";
+                    }                    
                 } else {
                     // SSO form passes instance name in POST to keep URLs portable.
                       if (!isset($this->content->text)) {
@@ -323,7 +327,7 @@ class block_panopto extends block_base {
 
         }
 
-        if(has_capability('moodle/course:update', $context)) {
+        if(has_capability('moodle/course:update', context_course::instance($COURSE->id, MUST_EXIST))) {
             $backtocourse = urlencode($CFG->wwwroot . '/course/view.php?id=' . $COURSE->id);
             $this->content->text .= '<div class="provision"><span><a href="' . $CFG->wwwroot . '/blocks/panopto/provision_course.php?course_id=' . $COURSE->id . '&return_url=' . $backtocourse .'" >' . get_string('block_add_thiscourse', 'block_panopto') . '</
 a></span></div>';
